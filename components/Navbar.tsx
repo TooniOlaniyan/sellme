@@ -5,7 +5,7 @@ import AuthProviders from "@/components/AuthProviders";
 import { getCurretUser } from "@/lib/session";
 
 const Navbar = async () => {
-    const session = await getCurretUser()
+  const session = await getCurretUser()
   return (
     <nav className="flexBetween navbar">
       <div className="flex-1 flexStart gap-10">
@@ -23,7 +23,7 @@ const Navbar = async () => {
       <div className="flexCenter gap-4">
         {session?.user ? (
             <>
-            Userphoto
+            UserPhoto
             <Link href='/create-project'>
                 {/* will contain a button to share post */}
                 Share post

@@ -6,6 +6,16 @@ import  jsonWebToken  from 'jsonwebtoken'
 import Jwt  from 'next-auth/jwt'
 import { SessionInterface } from '@/coomon.types'
 
+
+export async function getCurretUser() {
+    const session = await getServerSession(authOptions) as SessionInterface
+    console.log(session)
+
+    return session
+
+    
+}
+
 export const authOptions : NextAuthOptions = {
     providers : [
         GoogleProvider({
@@ -51,11 +61,3 @@ export const authOptions : NextAuthOptions = {
         }
     }
 } 
-
-export async function getCurretUser() {
-    const session = await getServerSession() as SessionInterface
-    
-    return session
-
-    
-}
