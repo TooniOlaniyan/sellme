@@ -8,8 +8,8 @@ import Jwt  from 'next-auth/jwt'
 export const authOptions : NextAuthOptions = {
     providers : [
         GoogleProvider({
-            clientId:'process.env.GOOGLE_CLIENT_ID!',
-            clientSecret:'process.env.GOOGLE_CLIENT_SECRET!'
+            clientId:process.env.GOOGLE_CLIENT_ID!,
+            clientSecret:process.env.GOOGLE_CLIENT_SECRET!
             
         })
     ],
