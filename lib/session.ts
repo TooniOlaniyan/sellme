@@ -4,6 +4,7 @@ import {AdapterUser} from 'next-auth/adapters'
 import GoogleProvider from 'next-auth/providers/google'
 import  jsonWebToken  from 'jsonwebtoken'
 import Jwt  from 'next-auth/jwt'
+import { SessionInterface } from '@/coomon.types'
 
 export const authOptions : NextAuthOptions = {
     providers : [
@@ -50,3 +51,11 @@ export const authOptions : NextAuthOptions = {
         }
     }
 } 
+
+export async function getCurretUser() {
+    const session = await getServerSession() as SessionInterface
+    
+    return session
+
+    
+}
