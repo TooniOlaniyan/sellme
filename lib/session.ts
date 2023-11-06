@@ -9,7 +9,6 @@ import { SessionInterface } from '@/coomon.types'
 
 export async function getCurretUser() {
     const session = await getServerSession(authOptions) as SessionInterface
-    console.log(session)
 
     return session
 
