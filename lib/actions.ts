@@ -17,7 +17,7 @@ const serverUrl = isProduction
 
 const makeGraphQLRequest = async (query: string, variables = {}) => {
   try {
-    return await client.request(query , variables  )
+    return await client.request(query , variables)
 
 
   } catch (error) {
