@@ -24,3 +24,8 @@ const makeGraphQLRequest = async (query: string, variables = {}) => {
     throw error;
   }
 };
+
+export const getUser = (email : string) => {
+  return makeGraphQLRequest()
+
+}
