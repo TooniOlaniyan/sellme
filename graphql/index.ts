@@ -7,7 +7,7 @@ query GetUser($email:string!){
         email
         avatarUrl
         githubUrl
-        linkedinUrl
+        linkedInUrl
 
 
     }
@@ -26,7 +26,7 @@ mutation CreateUser($input: UserCreateInput!){
             description
             avatarUrl
             githubUrl
-            linkedinUrl
+            linkedInUrl
         }
     }
 }

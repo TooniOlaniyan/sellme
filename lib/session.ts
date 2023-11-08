@@ -3,7 +3,7 @@ import { User, NextAuthOptions } from "next-auth";
 import { AdapterUser } from "next-auth/adapters";
 import GoogleProvider from "next-auth/providers/google";
 import jsonWebToken from "jsonwebtoken";
-import Jwt from "next-auth/jwt";
+import Jwt, { JWT } from "next-auth/jwt";
 import { SessionInterface, UserProfile } from "@/coomon.types";
 import { createUser, getUser } from "./actions";
 
@@ -21,14 +21,23 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
 
-  // jwt : {
-  //     encode: ({secret , token}) => {
+  jwt : {
+      encode: ({secret , token}) => {
+        const encodedToken = jsonWebToken.sign({
+            ...token,
+            iss:'grafbase',
+            exp:Math.floor(Date.now()/1000) + 60 * 60
+        } , secret)
 
-  //     },
-  //     decode : async ({secret , token}) => {
+        return encodedToken
 
-  //     }
-  // },
+      },
+      decode : async ({secret , token}) => {
+        const decodedToken = jsonWebToken.verify(token! , secret) as JWT
+        return decodedToken 
+
+      }
+  },
 
   theme: {
     colorScheme: "light",
