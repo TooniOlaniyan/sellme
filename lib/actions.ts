@@ -10,7 +10,7 @@ const client = new GraphQLClient(apiUrl);
 
 
 const apiKey = isProduction
-  ? process.env.NEXT_PUBLIC_GRAPHBASE_API_KEY || ""
+  ? process.env.NEXT_PUBLIC_GRAFBASE_API_KEY || ""
   : "letmein";
 
 const serverUrl = isProduction
@@ -36,7 +36,9 @@ export const createUser = (name: string, email: string, avaterUrl: string) => {
   client.setHeader("x-api-key", apiKey);
   const variables= {
     input:{
-      name,email,avaterUrl 
+      name:name,
+      email:email,
+      avaterUrl: avaterUrl
     }
   }
   return makeGraphQLRequest(createUserMutation , variables)
