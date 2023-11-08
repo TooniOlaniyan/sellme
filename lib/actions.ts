@@ -1,3 +1,5 @@
+import { createUserMutation, getUserQuery } from "@/graphql";
+import { Query } from "@grafbase/sdk/dist/src/query";
 import { GraphQLClient } from "graphql-request";
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -26,6 +28,14 @@ const makeGraphQLRequest = async (query: string, variables = {}) => {
 };
 
 export const getUser = (email : string) => {
-  return makeGraphQLRequest()
+  return makeGraphQLRequest(getUserQuery , {email})
 
 }
+export const createUser = (name: string, email: string, avaterUrl: string) => {
+  const variables= {
+    input:{
+      name,email,avaterUrl 
+    }
+  }
+  return makeGraphQLRequest(createUserMutation , variables)
+};
