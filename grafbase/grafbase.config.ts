@@ -18,7 +18,7 @@ const User = g
   .model("User", {
     name: g.string().length({ min: 2, max: 2 }),
     email: g.string().unique(),
-    avaterUrl: g.url(),
+    avatarUrl: g.url(),
     description: g.string(),
     githubUrl: g.url().optional(),
     linkedInUrl: g.url().optional(),
