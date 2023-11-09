@@ -21,7 +21,7 @@ const User = g
     avatarUrl: g.url(),
     description: g.string(),
     githubUrl: g.url().optional(),
-    linkedInUrl: g.url().optional(),
+    linkedinUrl: g.url().optional(),
     project: g
       .relation(() => Project)
       .list()
