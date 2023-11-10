@@ -27,9 +27,9 @@ const User = g
       .list()
       .optional(),
   })
-  .auth((rules) => {
-    rules.public().read();
-  });
+  // .auth((rules) => {
+  //   rules.public().read();
+  // });
 
 //@ts-ignore
 

@@ -4,7 +4,6 @@ import { AdapterUser } from "next-auth/adapters";
 import GoogleProvider from "next-auth/providers/google";
 import jsonwebtoken from "jsonwebtoken";
 import { JWT } from "next-auth/jwt";
-
 import { createUser, getUser } from "./actions";
 import { SessionInterface, UserProfile } from "@/coomon.types";
 
@@ -14,9 +13,10 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
+    
   ],
   jwt: {
-    encode: ({ secret, token }) => {
+    encode: async ({ secret, token }) => {
       const encodedToken = jsonwebtoken.sign(
         {
           ...token,
@@ -40,7 +40,6 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async session({ session }) {
       const email = session?.user?.email as string;
-
       try {
         const data = await getUser(email) as { user?: UserProfile };
 
@@ -64,7 +63,7 @@ export const authOptions: NextAuthOptions = {
           user?: UserProfile;
         };
 
-        if (!userExists.user) {
+        if (!userExists?.user) {
           await createUser(
             user.name as string,
             user.email as string,
@@ -72,10 +71,10 @@ export const authOptions: NextAuthOptions = {
           );
         }
 
-        return true;
+      return true;
       } catch (error: any) {
-        console.log("Error checking if user exists: ", error.message);
-        return false;
+        console.log("Error checking if user exists: ");
+        return true;
       }
     },
   },
