@@ -13,7 +13,10 @@ type Props = {
 };
 
 const ProjectForm = ({ type, session }: Props) => {
-  const handleFormSubmit = (e: React.FormEvent) => {};
+  const handleFormSubmit = (e: React.FormEvent) => {
+
+  };
+  // upload Image
 
   const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
