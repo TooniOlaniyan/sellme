@@ -10,6 +10,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    serverComponentsExternalPackages: ["cloudinary", "graphql-request"],
+  },
 };
 
-module.exports = nextConfig
+module.exports = nextConfig;
