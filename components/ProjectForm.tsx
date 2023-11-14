@@ -6,6 +6,7 @@ import Image from "next/image";
 import FormField from "./FormField";
 import { categoryFilters } from "@/constants";
 import CustomMenu from "./CustomMenu";
+import Button from "./Button";
 
 type Props = {
   type: string;
@@ -13,9 +14,7 @@ type Props = {
 };
 
 const ProjectForm = ({ type, session }: Props) => {
-  const handleFormSubmit = (e: React.FormEvent) => {
-
-  };
+  const handleFormSubmit = (e: React.FormEvent) => {};
   // upload Image
 
   const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
@@ -28,8 +27,8 @@ const ProjectForm = ({ type, session }: Props) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      const result = reader.result as string
-      handleStateChange('image' , result)
+      const result = reader.result as string;
+      handleStateChange("image", result);
     };
   };
 
@@ -109,7 +108,16 @@ const ProjectForm = ({ type, session }: Props) => {
       />
 
       <div className="flexStart w-full">
-        <button>Create</button>
+        <Button
+          title={
+            isSubmitting
+              ? `${type === "create" ? 'Creating' : 'Edititng'}`
+              : `${type === "create" ? 'Create' : 'Edit'}`
+          }
+          isSubmitting={isSubmitting}
+          type="submit"
+          leftIcon={isSubmitting ? "" : "/plus.svg"}
+        />
       </div>
     </form>
   );
